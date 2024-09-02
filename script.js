@@ -83,9 +83,9 @@ const renderProducts = (products) => {
 // You'll need to play with this function in order to add features and enhance the style.
 const renderProduct = (product) => {
   const productDiv = document.createElement('div');
-  productDiv.classList.add('col-md-3', 'mb-5', 'd-flex', 'justify-content-center'); 
+  productDiv.classList.add('col-md-3', 'mb-5', 'd-flex', 'justify-content-center', ' bg-dark' , 'text-white'); 
   CONTAINER.innerHTML = `
-  <div class="card p-3 mb-5 shadow bg-dark h-100 d-flex flex-row text-white" style="min-width: 22rem;">
+  <div class="card p-3 mb-5 shadow h-100 d-flex flex-row text-white" style="min-width: 22rem;">
   <img src="${product.image}" class="card-img-top d-flex align-items-center h-100 product-image rounded-pill bg-white" alt="${product.title} poster" style="width: 100%; max-height: 150px; object-fit: contain;">
             <div class="card-body">
               <h5 class="card-title">${product.title}</h5>
@@ -255,20 +255,20 @@ const renderCartPage = () => {
   } else {
     CART.forEach((item) => {
       const cartItemDiv = document.createElement('div');
-      cartItemDiv.classList.add('card', 'mb-3');
+      cartItemDiv.classList.add('card', 'mb-3', 'p-3' , 'bg-dark', 'text-white');
       cartItemDiv.innerHTML = `
-        <div class="row g-0">
-          <div class="col-md-4">
-            <img src="${item.image}" class="img-fluid rounded-start" alt="${item.title}" style="max-height: 150px; object-fit: contain;">
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <h5 class="card-title">${item.title}</h5>
-              <p class="card-text">Price: $${item.price.toFixed(2)}</p>
-              <p class="card-text">Quantity: ${item.quantity}</p>
-              <button class="btn btn-danger btn-sm" onclick="removeFromCart(${item.id})">Remove</button>
+        <div class="row">
+        <div class="col-md-4">
+        <img src="${item.image}" class="img-fluid rounded border" alt="${item.title}" style="max-height: 150px; object-fit: contain;">
+        </div>
+          <div class="card-body">
+          <h5 class="card-title">${item.title}</h5>
+          <p class="card-text">Price: $${item.price.toFixed(2)}</p>
+          <p class="card-text">Quantity: ${item.quantity}</p>
+          <button class="btn btn-danger btn-sm" onclick="removeFromCart(${item.id})">Remove</button>
+          
             </div>
-          </div>
+          
         </div>
       `;
       CONTAINER.appendChild(cartItemDiv);
