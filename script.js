@@ -2,8 +2,11 @@
 
 const STORE_BASE_URL = 'https://fakestoreapi.com';
 const CONTAINER = document.querySelector('.container');
-const CART = []; // Array to store cart items
+const CART = []; // Array l store cart items
 
+const body = document.querySelector('body');
+body.classList.add('mb-0');
+body.style.backgroundColor = "grey";
 // Don't touch this function please
 const autorun = async () => {
   const products = await fetchProducts();
@@ -47,8 +50,8 @@ const renderProducts = (products) => {
     productDiv.classList.add('col-md-3', 'mb-5', 'd-flex', 'justify-content-center'); // Bootstrap classes for layout
 
     productDiv.innerHTML = `
-          <div class="card p-3" style="width: 18rem;">
-            <img src="${product.image}" class="card-img-top d-flex align-items-center h-100 product-image" alt="${product.title} poster" style="width: 100%; max-height: 150px; object-fit: contain;">
+          <div class="card p-3 shadow bg-dark h-100 d-flex flex-column text-white" style="width: 18rem;">
+            <img src="${product.image}" class="card-img-top d-flex align-items-center h-100 product-image rounded-pill bg-white" alt="${product.title} poster" style="width: 100%; max-height: 150px; object-fit: contain;">
             <div class="card-body d-flex flex-column">
               <h6 class="card-title product-title">${product.title}</h6>
               <p class="card-text">${product.description.substring(0, 50)}...</p>
@@ -79,9 +82,11 @@ const renderProducts = (products) => {
 
 // You'll need to play with this function in order to add features and enhance the style.
 const renderProduct = (product) => {
+  const productDiv = document.createElement('div');
+  productDiv.classList.add('col-md-3', 'mb-5', 'd-flex', 'justify-content-center'); 
   CONTAINER.innerHTML = `
-       <div class="card h-100 bg-500">
-            <img src="${product.image}" class="card-img-top" alt="${product.title} poster">
+  <div class="card p-3 mb-5 shadow bg-dark h-100 d-flex flex-row text-white" style="min-width: 22rem;">
+  <img src="${product.image}" class="card-img-top d-flex align-items-center h-100 product-image rounded-pill bg-white" alt="${product.title} poster" style="width: 100%; max-height: 150px; object-fit: contain;">
             <div class="card-body">
               <h5 class="card-title">${product.title}</h5>
               <p class="card-text">${product.description}</p> <p class="card-text">Price: $${product.price.toFixed(2)}</p>
@@ -162,7 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Create the Navbar
   const navbar = document.createElement('nav');
-  navbar.className = 'navbar navbar-expand-lg navbar-light bg-gray';
+  navbar.className = 'navbar navbar-expand-lg navbar-light bg-gray   pt-0 mt-0';
 
   navbar.innerHTML = `
      <div class="container-fluid p-2 bg-dark mb-5">
@@ -283,6 +288,8 @@ const removeFromCart = (productId) => {
 
 const footer = document.createElement('footer');
 footer.className = 'footer text-center';
+footer.classList.add( 'bg-dark', 'text-white' , 'mb-0' , 'mt-5' , 'p-3' );
+
 footer.innerHTML = `
   <p>©2023 Built By Abdulaziz Alhashedi </p>
   <a href="https://github.com/Hash-Ezz" target="_blank" rel="noopener noreferrer">
